@@ -20,11 +20,7 @@ Support for other platforms may be added in the future.
 
 This repository also ships *fsqm*, a simple command line interface to filesystem quotas. *fsqm* provides the ability to retrieve user and group quota reports and management of user and group quotas.
 
-*fsqm* can be obtained using
-
-```sh
-go get -u github.com/anexia-it/fsquota/cmd/fsqm
-```
+*fsqm* can be obtained from [the releases page](https://github.com/anexia-it/fsquota/releases).
 
 ## Issue tracker
 
@@ -32,7 +28,7 @@ Issues in fsquota are tracked using the corresponding GitHub project's [issue tr
 
 ## Status
 
-The current release is **v0.1.0**.
+The current release is **v0.1.1**.
 
 
 Changes to fsquota are subject to [semantic versioning](http://semver.org/).
