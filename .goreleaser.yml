@@ -1,0 +1,26 @@
+project_name: fsqm
+
+builds:
+  - main: ./cmd/fsqm/fsqm.go
+    binary: fsqm
+    ldflags: -s -w
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+
+archive:
+  format: tar.gz
+  wrap_in_directory: true
+
+  files:
+    - README.md
+
+release:
+  github:
+    owner: anexia-it
+    name: fsquota
+  draft: true
+  prerelease: true
