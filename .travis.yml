@@ -1,0 +1,21 @@
+language: go
+sudo: false
+
+matrix:
+  include:
+    - go: 1.8
+    - go: 1.9
+    - go: 1.10
+
+branches:
+  only:
+    - master
+
+install:
+  - go get golang.org/x/tools/cmd/cover
+
+script:
+  - GO15VENDOREXPERIMENT=1 go test -v -coverprofile=coverage.txt -covermode=atomic
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
