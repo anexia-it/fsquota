@@ -10,6 +10,7 @@ matrix:
 branches:
   only:
     - master
+    - /v\d+\.\d+\.\d+/
 
 install:
   - go get golang.org/x/tools/cmd/cover
