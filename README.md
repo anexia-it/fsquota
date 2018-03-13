@@ -28,7 +28,7 @@ Issues in fsquota are tracked using the corresponding GitHub project's [issue tr
 
 ## Status
 
-The current release is **v0.1.1**.
+The current release is **v0.1.2**.
 
 
 Changes to fsquota are subject to [semantic versioning](http://semver.org/).

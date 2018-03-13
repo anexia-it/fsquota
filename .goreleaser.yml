@@ -1,7 +1,7 @@
 project_name: fsqm
 
 builds:
-  - main: ./cmd/fsqm/fsqm.go
+  - main: ./cmd/fsqm/
     binary: fsqm
     ldflags: -s -w
     env:
@@ -23,5 +23,5 @@ release:
   github:
     owner: anexia-it
     name: fsquota
-  draft: true
-  prerelease: true
+  draft: false
+  prerelease: false
