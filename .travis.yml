@@ -24,6 +24,7 @@ deploy:
     on:
       tags: true
       condition: $TRAVIS_OS_NAME = linux
+      go: "1.10"
   
 after_success:
   - bash <(curl -s https://codecov.io/bash)
