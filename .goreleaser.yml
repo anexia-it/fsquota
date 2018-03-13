@@ -17,6 +17,7 @@ archive:
 
   files:
     - README.md
+    - LICENSE
 
 release:
   github:

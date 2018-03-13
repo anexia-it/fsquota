@@ -17,5 +17,13 @@ install:
 script:
   - GO15VENDOREXPERIMENT=1 go test -v -coverprofile=coverage.txt -covermode=atomic
 
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: curl -sL http://git.io/goreleaser | bash
+    on:
+      tags: true
+      condition: $TRAVIS_OS_NAME = linux
+  
 after_success:
   - bash <(curl -s https://codecov.io/bash)
