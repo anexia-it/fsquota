@@ -32,3 +32,13 @@ func GetGroupInfo(path string, group *user.Group) (info *Info, err error) {
 func GetGroupReport(path string) (report *Report, err error) {
 	return getGroupReport(path)
 }
+
+// UserQuotasSupported checks if quotas are supported on a given path
+func UserQuotasSupported(path string) (supported bool, err error) {
+	return userQuotasSupported(path)
+}
+
+// GroupQuotasSupported checks if group quotas are supported on a given path
+func GroupQuotasSupported(path string) (supported bool, err error) {
+	return groupQuotasSupported(path)
+}
