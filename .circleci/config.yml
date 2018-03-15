@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  integration-tests:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Prepare test environment
+          command: sudo bash ./.circleci/prepare_environment.sh
+      - run:
+          name: Run integration tests
+          command: sudo bash ./.circleci/run_tests.sh
+      - post:
+          - bash <(curl -s https://codecov.io/bash)
