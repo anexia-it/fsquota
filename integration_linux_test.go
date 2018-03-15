@@ -30,7 +30,7 @@ func prepareIntegrationTest(t *testing.T) string {
 	return testMountPoint
 }
 
-func TestSetUserQuota(t *testing.T) {
+func TestSetAndGetUserQuota(t *testing.T) {
 	testMountPoint := prepareIntegrationTest(t)
 
 	// Test against user 10000
@@ -46,7 +46,53 @@ func TestSetUserQuota(t *testing.T) {
 
 	quotaInfo, err := fsquota.SetUserQuota(testMountPoint, testUser, limits)
 	require.NoError(t, err)
+	require.NotNil(t, quotaInfo)
 
+	assert.EqualValues(t, 10*1024*1024, quotaInfo.Bytes.GetSoft())
+	assert.EqualValues(t, 500*1024*1024, quotaInfo.Bytes.GetHard())
+	assert.EqualValues(t, 1000, quotaInfo.Files.GetSoft())
+	assert.EqualValues(t, 5000, quotaInfo.Files.GetHard())
+
+	// Retrieve the quota information again, testing GetUserQuota as well
+	quotaInfo, err = fsquota.GetUserInfo(testMountPoint, testUser)
+	require.NoError(t, err)
+	require.NotNil(t, quotaInfo)
+
+	// The values should still be the same, meaning the information was persisted to the filesystem
+	assert.EqualValues(t, 10*1024*1024, quotaInfo.Bytes.GetSoft())
+	assert.EqualValues(t, 500*1024*1024, quotaInfo.Bytes.GetHard())
+	assert.EqualValues(t, 1000, quotaInfo.Files.GetSoft())
+	assert.EqualValues(t, 5000, quotaInfo.Files.GetHard())
+}
+
+func TestSetAndGetGroupQuota(t *testing.T) {
+	testMountPoint := prepareIntegrationTest(t)
+
+	// Test against group 10000
+	testGroup := &user.Group{
+		Gid: "10000",
+	}
+
+	limits := fsquota.Limits{}
+	limits.Bytes.SetSoft(10 * 1024 * 1024)  // 10MiB soft limit
+	limits.Bytes.SetHard(500 * 1024 * 1024) // 500MiB hard limit
+	limits.Files.SetSoft(1000)              // 1000 files soft limit
+	limits.Files.SetHard(5000)              // 5000 files hard limit
+
+	quotaInfo, err := fsquota.SetGroupQuota(testMountPoint, testGroup, limits)
+	require.NoError(t, err)
+
+	assert.EqualValues(t, 10*1024*1024, quotaInfo.Bytes.GetSoft())
+	assert.EqualValues(t, 500*1024*1024, quotaInfo.Bytes.GetHard())
+	assert.EqualValues(t, 1000, quotaInfo.Files.GetSoft())
+	assert.EqualValues(t, 5000, quotaInfo.Files.GetHard())
+
+	// Retrieve the quota information again, testing GetUserQuota as well
+	quotaInfo, err = fsquota.GetGroupInfo(testMountPoint, testGroup)
+	require.NoError(t, err)
+	require.NotNil(t, quotaInfo)
+
+	// The values should still be the same, meaning the information was persisted to the filesystem
 	assert.EqualValues(t, 10*1024*1024, quotaInfo.Bytes.GetSoft())
 	assert.EqualValues(t, 500*1024*1024, quotaInfo.Bytes.GetHard())
 	assert.EqualValues(t, 1000, quotaInfo.Files.GetSoft())
