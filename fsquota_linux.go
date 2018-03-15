@@ -267,3 +267,24 @@ func getReportLegacy(t quotaCtlType, device string, idLookupFn reportLegacyIDLoo
 
 	return
 }
+
+func quotasSupported(t quotaCtlType, path string) (supported bool, err error) {
+	var device string
+	if device, _, err = prepareArguments(path, "0"); err != nil {
+		return
+	}
+
+	if _, err = internalGetQuota(groupQuota, device, 0); err == nil {
+		supported = true
+	}
+
+	return
+}
+
+func userQuotasSupported(path string) (supported bool, err error) {
+	return quotasSupported(userQuota, path)
+}
+
+func groupQuotasSupported(path string) (supported bool, err error) {
+	return quotasSupported(groupQuota, path)
+}
