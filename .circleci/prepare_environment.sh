@@ -17,5 +17,5 @@ quotacheck -vugm /mnt/quota_test
 quotaon -v /mnt/quota_test
 for i in {10000..10009}
 do
-    adduser --system --shell /bin/false --no-create-home --uid $i --gid $1 --disabled-login --disabled-password test$i
+    adduser --system --shell /bin/false --no-create-home --uid $i --gid $i --disabled-login --disabled-password test$i
 done
