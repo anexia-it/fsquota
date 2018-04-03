@@ -8,7 +8,7 @@ apt-get install -y quota
 truncate -s1G /tmp/quotas_enabled.ext4
 truncate -s1G /tmp/quotas_disabled.ext4
 mkfs.ext4 -F /tmp/quotas_enabled.ext4
-mkfs.ext4 -F /mnt/quotas_disabled.ext4
+mkfs.ext4 -F /tmp/quotas_disabled.ext4
 mkdir -p /mnt/quota_test /mnt/noquota_test
 mount -o usrjquota=aquota.user,grpjquota=aquota.group,jqfmt=vfsv1 /tmp/quotas_enabled.ext4 /mnt/quota_test
 mount /tmp/quotas_disabled.ext4 /mnt/noquota_test
