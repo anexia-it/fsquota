@@ -211,7 +211,7 @@ func (n nextdqblk) toDqblk() *dqblk {
 }
 
 func getReportByNextQuota(t quotaCtlType, device string) (report *Report, err error) {
-	report = &Report{
+	rep := &Report{
 		Infos: make(map[string]*Info),
 	}
 
@@ -232,8 +232,12 @@ func getReportByNextQuota(t quotaCtlType, device string) (report *Report, err er
 			break
 		}
 
-		report.Infos[fmt.Sprint(nextQuotaInfoStruct.dqbId)] = nextQuotaInfoStruct.toDqblk().toInfo()
+		rep.Infos[fmt.Sprint(nextQuotaInfoStruct.dqbId)] = nextQuotaInfoStruct.toDqblk().toInfo()
 		nextId += 1
+	}
+
+	if err == nil {
+		report = rep
 	}
 
 	return
@@ -274,7 +278,7 @@ func quotasSupported(t quotaCtlType, path string) (supported bool, err error) {
 		return
 	}
 
-	if _, err = internalGetQuota(groupQuota, device, 0); err == nil {
+	if _, err = internalGetQuota(t, device, 0); err == nil {
 		supported = true
 	}
 
