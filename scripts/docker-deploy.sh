@@ -13,6 +13,8 @@ echo "Work dir     : $WorkDir"
 echo "Binaries dir : $BinDir"
 
 docker run --rm -it -v "$WorkDir":/usr/src/myapp -v "$GOPATH":/go -w /usr/src/myapp golang:$GoVersion bash -c '
+echo $PWD && \
+ls -la && \
 rm -rf bin && \
 mkdir bin && \
 for GOOS in linux; do
@@ -24,24 +26,22 @@ for GOOS in linux; do
   done
 done
 ' && \
-echo "Build complete" &&\
-echo "" &&\
-echo "Permission adding:" &&\
-echo "chown -R root:root $BinDir" &&\
-echo "chmod -R 777 $BinDir" &&\
+echo "Build complete" && \
+echo "" && \
+echo "Permission adding:" && \
+echo "chown -R root:root $BinDir" && \
+echo "chmod -R 777 $BinDir" && \
 echo "" &&\
 chown -R root:root "$BinDir" && \
 chmod -R 777 "$BinDir" && \
-echo "" &&\
-echo "ls -la $BinDir:" &&\
+echo "" && \
+echo "ls -la $BinDir:" && \
 ls -la "$BinDir" && \
-echo "" &&\
-echo "EnvPath" &&\
+echo "" && \
+echo "EnvPath" && \
 export PATH=$PATH:"$BinDir" && \
-echo "" &&\
-echo $PATH && \
-echo "" &&\
-echo "$\"Path\":" &&\
+echo "" && \
+echo "\$Path:\"$BinDir\"" && \
 "$BinDir"/fsqm-amd64 && \
 echo ""  && \
 echo " ---- [End] deploy for all platforms ($Platforms [$Architectures]) [end]-----"  && \
