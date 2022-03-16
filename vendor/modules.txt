@@ -1,0 +1,34 @@
+# github.com/davecgh/go-spew v1.1.0
+## explicit
+github.com/davecgh/go-spew/spew
+# github.com/docker/docker v1.13.1
+## explicit
+github.com/docker/docker/pkg/mount
+# github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4
+## explicit
+github.com/dustin/go-humanize
+# github.com/hashicorp/go-version v0.0.0-20171129150820-4fe82ae3040f
+## explicit
+github.com/hashicorp/go-version
+# github.com/inconshreveable/mousetrap v1.0.0
+## explicit
+github.com/inconshreveable/mousetrap
+# github.com/pmezard/go-difflib v1.0.0
+## explicit
+github.com/pmezard/go-difflib/difflib
+# github.com/speijnik/go-errortree v1.0.0
+## explicit
+github.com/speijnik/go-errortree
+# github.com/spf13/cobra v0.0.1
+## explicit
+github.com/spf13/cobra
+# github.com/spf13/pflag v1.0.0
+## explicit
+github.com/spf13/pflag
+# github.com/stretchr/testify v1.2.1
+## explicit
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/require
+# golang.org/x/sys v0.0.0-20180312081825-c28acc882ebc
+## explicit
+golang.org/x/sys/unix
