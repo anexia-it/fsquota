@@ -98,7 +98,7 @@ files:
   - used: 3
 ```
 
-Which will create following files into /mnt/quota_test folder as following
+Which will create following files into `/mnt/quota_test` folder as following
 
 ```shell
 sudo chmod -R 777 /mnt/quota_test # will give error ignore.
