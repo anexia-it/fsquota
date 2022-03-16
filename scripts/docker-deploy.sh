@@ -43,5 +43,7 @@ echo "" && \
 echo "\$Path:\"$BinDir\"" && \
 "$BinDir"/fsqm-amd64 && \
 echo ""  && \
+echo "export PATH=\$PATH:\"$BparseLimitsFlaginDir\""  && \
+echo ""  && \
 echo " ---- [End] deploy for all platforms ($Platforms [$Architectures]) [end]-----"  && \
 echo ""
