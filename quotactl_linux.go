@@ -92,7 +92,7 @@ func (d dqblk) toInfo() (info *Info) {
 		BytesUsed: d.dqbCurSpace,
 	}
 
-	//info.BytesUsed = info.BytesUsed
+	// info.BytesUsed = info.BytesUsed
 	*info.Limits.Bytes.hard = dqBlocksToBytes(*info.Limits.Bytes.hard)
 	*info.Limits.Bytes.soft = dqBlocksToBytes(*info.Limits.Bytes.soft)
 

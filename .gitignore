@@ -1,1 +1,70 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin
+dist
 dist/
+bin/*.*
+bin/**/*.*
+*.DS_Store
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# IDE
+.idea
+.idea/*.*
+.idea/**/*.*
+**/.idea/*.*
+**/.idea/**/*.*
+**/**/.idea/*.*
+**/**/.idea/**/*.*
+.idea/*.*
+.idea/**/*.*
+build/
+*.db
+*.db-journal
+
+# web
+swagger.zip
+swagger/
+swagger/*.*
+routers/commentsRouter_controllers.go
+
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+**/*.log
+**/node_modules
+.coverage
+.nyc_output
+docs/
+out/
+system-test/secrets.js
+system-test/*key.json
+*.lock
+*-lock.js*
+build/
+.vscode
+package-lock.json
+__pycache__

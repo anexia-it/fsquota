@@ -51,6 +51,16 @@ func isNumeric(s string) bool {
 	return true
 }
 
+// parseLimitsFlag
+//
+//  Takes a flag name and parse flag by comma split
+//  Expected value in flag "SoftLimit,HardLimit"
+//
+//   Dependent function humanize.ParseBytes
+//
+// Example:
+//  - "2 MB, 4mib" => Soft-limit : 2 mb,  Hard-limit: 2 mb
+//  - "6mib, 1MB" => Soft-limit : 6 mb,  Hard-limit: 1 mb
 func parseLimitsFlag(cmd *cobra.Command, flagName string) (soft, hard uint64, present bool, err error) {
 	var flagString string
 	if flagString, err = cmd.Flags().GetString(flagName); err != nil {
