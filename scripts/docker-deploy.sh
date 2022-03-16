@@ -14,7 +14,6 @@ echo "Binaries dir : $BinDir"
 
 docker run --rm -it -v "$WorkDir":/usr/src/myapp -v "$GOPATH":/go -w /usr/src/myapp golang:$GoVersion bash -c '
 echo $PWD && \
-ls -la && \
 rm -rf bin && \
 mkdir bin && \
 for GOOS in linux; do
